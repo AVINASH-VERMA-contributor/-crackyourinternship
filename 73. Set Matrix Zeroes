@@ -1,0 +1,30 @@
+class Solution {
+    public void setZeroes(int[][] matrix) {
+        
+    ArrayList<Integer> zerorows = new ArrayList<>();
+    ArrayList<Integer> zerocols=new ArrayList<>();
+        
+        
+        for(int i=0;i<matrix.length;i++){
+            for(int j=0;j<matrix[i].length;j++){
+                if(matrix[i][j]==0){
+                    if(!zerorows.contains(i)){
+                        zerorows.add(i);
+                    }
+                    if(!zerocols.contains(j)){
+                        zerocols.add(j);
+                    }
+                }
+            }
+        }
+        
+        for(int i=0;i<matrix.length;i++){
+            for(int j=0;j<matrix[i].length;j++){
+                if(zerorows.contains(i) || zerocols.contains(j)){
+                    matrix[i][j]=0;
+                }
+            }
+        }
+        
+    }
+}
