@@ -1,0 +1,44 @@
+*/
+class Solution {
+    public ListNode deleteDuplicates(ListNode head) {
+        if(head==null || head.next==null){
+            return head;
+        }
+        
+        ListNode temp=head;
+        
+        ListNode dummy=new ListNode(0);
+        ListNode ret=dummy;
+        dummy.next=head;
+        
+        
+        ListNode ans=head;
+        
+        
+        ArrayList<Integer> a=new ArrayList<Integer>();
+        
+        while(temp!=null && temp.next!=null){
+            if(temp.val==temp.next.val){
+                temp.next=temp.next.next;
+                a.add(temp.val);
+            }else{
+                temp=temp.next;
+            }
+        }
+        
+        while(ans!=null){
+            System.out.println(ans.val);
+                        System.out.println(a.contains(ans.val));
+
+            if(a.contains(ans.val)){
+                dummy.next=ans.next;
+            }
+            else
+            dummy=dummy.next;
+            ans=ans.next;
+            
+        }
+        
+        return ret.next;
+    }
+}
